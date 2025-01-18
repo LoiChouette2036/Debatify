@@ -16,11 +16,12 @@
     <% comment.comments.order(:created_at).each do |reply| %>
       <div class="sub-comment p-1 d-flex flex-column justify-content-end" data-controller="vote" data-vote-id="<%= reply.id %>">
         <!-- Avatar -->
-        <% if reply.user.photo.present? %>
-          <%= cl_image_tag reply.user.photo.key, style: "width: 20px; height: 20px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); outline: 2px solid #d4c1a9;" %>
-        <% else %>
-          <%= image_tag "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg", class: "avatar" , style: "width: 20px; height: 20px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); outline: 2px solid #d4c1a9;"%>
-        <% end %>
+        <%# <% if reply.user.photo.present? %> 
+          <%# <%= cl_image_tag reply.user.photo.key, style: "width: 20px; height: 20px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); outline: 2px solid #d4c1a9;" %> 
+        <%# <% else %> 
+          <%# <%= image_tag "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg", class: "avatar" , style: "width: 20px; height: 20px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); outline: 2px solid #d4c1a9;"%> 
+        <%# <% end %> 
+        <div style="width: 35px; height: 35px; background-color: #d4c1a9; border-radius: 50%; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); outline: 2px solid #d4c1a9;"></div>
         <!-- Name and Content -->
         <%= render 'topics/second_reply_form', comment: reply, new_comment: new_comment %>
       </div>

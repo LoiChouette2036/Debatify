@@ -41,17 +41,17 @@ class TopicsController < ApplicationController
     max_votes = 100
     @thermometer_percentage = [total_votes.to_f / max_votes * 100, 100].min
 
-    client = OpenAI::Client.new
-    chatgpt_response = client.chat(parameters: {
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: "give me a summary of how the users feel based on the comments: #{@main_comments.map(&:content).join(', ')}. If there are no comments,
-      or less than 2 comments, write 'waiting for new comments'.  give an example of a comment on
-      against and for side. For example you can say that someone felt this way about the topic, but dont give
-      the exact comment, just a summary of the comment, and word it like 'for example, one user felt this way' etc. make your summary max 300 characters.
-      if there is no comment, make just a phrase where say you re waiting comments to summarize. " }]
-    })
-    @content = chatgpt_response['choices'][0]['message']['content']
-
+    # client = OpenAI::Client.new
+    # chatgpt_response = client.chat(parameters: {
+    #   model: "gpt-4o-mini",
+    #   messages: [{ role: "user", content: "give me a summary of how the users feel based on the comments: #{@main_comments.map(&:content).join(', ')}. If there are no comments,
+    #   or less than 2 comments, write 'waiting for new comments'.  give an example of a comment on
+    #   against and for side. For example you can say that someone felt this way about the topic, but dont give
+    #   the exact comment, just a summary of the comment, and word it like 'for example, one user felt this way' etc. make your summary max 300 characters.
+    #   if there is no comment, make just a phrase where say you re waiting comments to summarize. " }]
+    # })
+    # @content = chatgpt_response['choices'][0]['message']['content']
+    @content = "No AI for now"
     @comment = @topic.comments.build
   end
 
